@@ -8,6 +8,7 @@
  */
 
 import { CkApp } from "./components/ck-app/ck-app.js";
+import { CkSidebar } from "./components/ck-sidebar/ck-sidebar.js";
 import { CkMessage } from "./components/ck-message/ck-message.js";
 import { CkMessages } from "./components/ck-messages/ck-messages.js";
 import { CkInput } from "./components/ck-input/ck-input.js";
@@ -16,6 +17,7 @@ import { CkArtifact } from "./components/ck-artifact/ck-artifact.js";
 
 const components = [
   { tag: "ck-app", cls: CkApp },
+  { tag: "ck-sidebar", cls: CkSidebar },
   { tag: "ck-message", cls: CkMessage },
   { tag: "ck-messages", cls: CkMessages },
   { tag: "ck-input", cls: CkInput },

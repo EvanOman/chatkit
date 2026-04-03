@@ -19,6 +19,7 @@ export type { SSEConnection, SSEOptions, SSEEvent, EventTypeName } from "./sse/s
 // Components
 export { CkApp } from "./components/ck-app/ck-app.js";
 export type { OnBeforeFetchCallback } from "./components/ck-app/ck-app.js";
+export { CkSidebar } from "./components/ck-sidebar/ck-sidebar.js";
 export { CkMessage } from "./components/ck-message/ck-message.js";
 export { CkMessages } from "./components/ck-messages/ck-messages.js";
 export { CkInput } from "./components/ck-input/ck-input.js";

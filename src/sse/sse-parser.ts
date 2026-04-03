@@ -24,7 +24,8 @@ export async function* parseSSEStream(
       const { done, value } = await reader.read();
       if (done) break;
 
-      const text = tail + value;
+      // Normalize \r\n and \r to \n (SSE spec allows all three line endings)
+      const text = tail + value.replace(/\r\n|\r/g, "\n");
 
       // Find the last double-newline boundary
       const lastBoundary = text.lastIndexOf("\n\n");

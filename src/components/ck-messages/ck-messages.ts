@@ -143,7 +143,11 @@ export class CkMessages extends CkBase {
     // Ensure it's in the DOM at the end of current turn or messages
     const parent = this.#currentTurn ?? this.#inner;
     if (this.#statusEl.parentElement !== parent) {
-      parent!.insertBefore(this.#statusEl, this.#sentinel);
+      if (parent === this.#inner) {
+        parent!.insertBefore(this.#statusEl, this.#sentinel);
+      } else {
+        parent!.appendChild(this.#statusEl);
+      }
     }
     this.scheduleScroll();
   }
