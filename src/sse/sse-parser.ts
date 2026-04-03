@@ -79,7 +79,9 @@ function parseRawEvent(raw: string): SSEEvent | null {
       event = line.substring(6).trim();
     } else if (line.startsWith("data:")) {
       if (hasData) data += "\n";
-      data += line.substring(5).trimStart();
+      // SSE spec: strip at most one leading space after "data:"
+      const raw = line.substring(5);
+      data += raw.startsWith(" ") ? raw.substring(1) : raw;
       hasData = true;
     } else if (line.startsWith("id:")) {
       id = line.substring(3).trim();

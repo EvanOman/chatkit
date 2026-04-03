@@ -108,7 +108,8 @@ export class CkMessage extends CkBase {
         if (this.#parser && this.#pendingText) {
           smd.parser_write(this.#parser, this.#pendingText);
           this.#pendingText = "";
-          this.#sanitizeContainer();
+          // Note: do NOT sanitize during streaming — it destroys smd's
+          // internal DOM references. Sanitization happens in endStreaming().
         }
       });
     }
