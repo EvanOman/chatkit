@@ -14,7 +14,6 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      external: ["streaming-markdown", "dompurify"],
       output: {
         preserveModules: false,
         entryFileNames: "[name].js",
