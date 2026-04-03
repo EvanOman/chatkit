@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chatkit Echo Demo</title>
+  <link rel="stylesheet" href="/chatkit/dist/theme/chatkit.css" />
+  <script type="module" src="/chatkit/dist/register.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; width: 100%; overflow: hidden; background: var(--ck-bg); }
+  </style>
+</head>
+<body>
+  <ck-app api-base="/api" style="height:100vh;width:100vw;">
+    <ck-sidebar slot="sidebar"></ck-sidebar>
+    <ck-messages slot="messages"></ck-messages>
+    <ck-input slot="input" placeholder="Type a message..."></ck-input>
+  </ck-app>
+</body>
+</html>

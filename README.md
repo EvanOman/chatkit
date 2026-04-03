@@ -4,6 +4,27 @@ Reusable Web Components chat UI with SSE streaming.
 
 Chatkit gives you a set of custom elements (`<ck-messages>`, `<ck-input>`, etc.) that connect to any backend speaking a simple SSE protocol. A companion Python package provides Pydantic models and FastAPI helpers for the server side.
 
+![Chatkit empty state](docs/screenshot-empty.png)
+
+![Chatkit in action — streaming markdown, tool cards, code blocks, and data tables](docs/screenshot-chat.png)
+
+## Try the Demo
+
+No API keys needed. The echo demo responds to any message with formatted markdown, tool cards, code blocks, and data artifacts:
+
+```bash
+git clone https://github.com/EvanOman/chatkit.git
+cd chatkit
+npm install && npx vite build
+
+cd demo
+pip install -r requirements.txt
+pip install -e ../python
+python server.py
+```
+
+Open http://127.0.0.1:19800 and send a message.
+
 ## Quick Start
 
 ### Frontend
