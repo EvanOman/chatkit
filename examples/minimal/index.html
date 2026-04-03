@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatkit Minimal Example</title>
+
+  <!-- Chatkit theme (dark mode by default; add class="light" to <html> for light) -->
+  <link rel="stylesheet" href="../../dist/theme/chatkit.css">
+
+  <!-- Register all chatkit custom elements -->
+  <script type="module" src="../../dist/register.js"></script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; font-family: var(--ck-font); background: var(--ck-bg); color: var(--ck-text); }
+    .layout { display: flex; height: 100vh; }
+    .main { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <ck-sidebar></ck-sidebar>
+    <div class="main">
+      <ck-messages></ck-messages>
+      <ck-input></ck-input>
+    </div>
+  </div>
+
+  <script type="module">
+    import { connectSSE } from "../../dist/sse/sse-client.js";
+
+    // NOTE: Point this at your running backend (e.g., http://localhost:8000/api)
+    const API_BASE = "/api";
+
+    const messages = document.querySelector("ck-messages");
+    const input = document.querySelector("ck-input");
+    const sidebar = document.querySelector("ck-sidebar");
+    let threadId = null;
+
+    // Handle message submission
+    document.addEventListener("ck-submit", async (e) => {
+      const { message } = e.detail;
+      if (!message.trim()) return;
+
+      // Show user message
+      messages.addMessage("user", message);
+
+      // Stream assistant response
+      const sse = connectSSE(`${API_BASE}/chat`, {
+        body: { thread_id: threadId, message, metadata: {} },
+      });
+
+      let assistantText = "";
+
+      for await (const event of sse) {
+        switch (event.event) {
+          case "init": {
+            const data = JSON.parse(event.data);
+            threadId = data.thread_id;
+            break;
+          }
+          case "text":
+            assistantText += event.data;
+            messages.streamText(event.data);
+            break;
+          case "status":
+            messages.setStatus(event.data);
+            break;
+          case "tool_use": {
+            const tool = JSON.parse(event.data);
+            messages.addToolUse(tool.tool, tool.input);
+            break;
+          }
+          case "tool_done": {
+            const result = JSON.parse(event.data);
+            messages.addToolDone(result.tool, result.summary);
+            break;
+          }
+          case "error":
+            messages.showError(event.data);
+            break;
+          case "done":
+            messages.finalize();
+            break;
+        }
+      }
+    });
+
+    // Handle stop button
+    document.addEventListener("ck-stop", () => {
+      // The SSE connection will be aborted by the component
+    });
+
+    // Handle sidebar events
+    document.addEventListener("ck-new-chat", () => {
+      threadId = null;
+      messages.clear();
+    });
+
+    document.addEventListener("ck-thread-select", (e) => {
+      threadId = e.detail.threadId;
+      // Load thread messages from your backend here
+    });
+
+    document.addEventListener("ck-thread-delete", async (e) => {
+      const { threadId: id } = e.detail;
+      if (!confirm("Delete this conversation?")) {
+        e.preventDefault();
+        return;
+      }
+      await fetch(`${API_BASE}/conversations/${id}`, { method: "DELETE" });
+    });
+  </script>
+</body>
+</html>

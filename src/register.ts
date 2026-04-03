@@ -7,6 +7,7 @@
  * Each component is guarded against double-registration.
  */
 
+import { CkApp } from "./components/ck-app/ck-app.js";
 import { CkMessage } from "./components/ck-message/ck-message.js";
 import { CkMessages } from "./components/ck-messages/ck-messages.js";
 import { CkInput } from "./components/ck-input/ck-input.js";
@@ -14,6 +15,7 @@ import { CkToolCard } from "./components/ck-tool-card/ck-tool-card.js";
 import { CkArtifact } from "./components/ck-artifact/ck-artifact.js";
 
 const components = [
+  { tag: "ck-app", cls: CkApp },
   { tag: "ck-message", cls: CkMessage },
   { tag: "ck-messages", cls: CkMessages },
   { tag: "ck-input", cls: CkInput },
