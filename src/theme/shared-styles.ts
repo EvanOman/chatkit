@@ -38,8 +38,8 @@ animationsSheet.replaceSync(`
     to { transform: rotate(360deg); }
   }
   @keyframes ck-glow-pulse {
-    0%, 100% { box-shadow: 0 0 0 0 var(--ck-accent-glow, rgba(124, 91, 245, 0.25)); }
-    50% { box-shadow: 0 0 16px 2px var(--ck-accent-glow, rgba(124, 91, 245, 0.25)); }
+    0%, 100% { box-shadow: 0 0 0 0 var(--ck-accent-glow, rgba(34, 197, 94, 0.25)); }
+    50% { box-shadow: 0 0 16px 2px var(--ck-accent-glow, rgba(34, 197, 94, 0.25)); }
   }
 `);
 
@@ -70,10 +70,11 @@ markdownSheet.replaceSync(`
   .ck-markdown li { margin-bottom: 0.25em; }
   .ck-markdown code {
     background: var(--ck-bg-code, #0d1117);
-    padding: 0.15em 0.35em;
+    padding: 0.15em 0.4em;
     border-radius: 4px;
     font-family: var(--ck-font-mono, monospace);
-    font-size: 0.875em;
+    font-size: 0.85em;
+    border: 1px solid var(--ck-border, #1e1e1e);
   }
   .ck-markdown pre {
     background: var(--ck-bg-code, #0d1117);
@@ -81,17 +82,19 @@ markdownSheet.replaceSync(`
     border-radius: var(--ck-radius, 0.75rem);
     overflow-x: auto;
     margin-bottom: 0.75em;
+    border: 1px solid var(--ck-border, #1e1e1e);
   }
   .ck-markdown pre code {
     background: none;
     padding: 0;
     font-size: 0.85em;
+    border: none;
   }
   .ck-markdown blockquote {
-    border-left: 3px solid var(--ck-accent, #8b7cf6);
+    border-left: 3px solid var(--ck-accent, #22c55e);
     padding-left: 1em;
     margin-bottom: 0.75em;
-    color: var(--ck-text-secondary, #b4b4b4);
+    color: var(--ck-text-secondary, #A1A1A1);
   }
   .ck-markdown table {
     width: 100%;
@@ -109,7 +112,7 @@ markdownSheet.replaceSync(`
     font-weight: 600;
   }
   .ck-markdown a {
-    color: var(--ck-accent, #8b7cf6);
+    color: var(--ck-accent, #22c55e);
     text-decoration: none;
   }
   .ck-markdown a:hover {

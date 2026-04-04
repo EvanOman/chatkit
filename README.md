@@ -29,8 +29,22 @@ Open http://127.0.0.1:19800 and send a message.
 
 ### Frontend
 
+Install from GitHub at a specific commit:
+
 ```bash
-npm install chatkit
+npm install github:EvanOman/chatkit#<commit-hash>
+```
+
+Or track the latest `main`:
+
+```bash
+npm install github:EvanOman/chatkit
+```
+
+To update after upstream changes, reinstall with the new hash or run:
+
+```bash
+npm update chatkit
 ```
 
 ```js

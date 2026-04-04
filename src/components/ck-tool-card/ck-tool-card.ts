@@ -23,8 +23,8 @@ componentSheet.replaceSync(`
     transition: border-color 0.2s;
   }
   .card.running {
-    border-color: var(--ck-accent, #7c5bf5);
-    box-shadow: 0 0 8px var(--ck-accent-glow, rgba(124, 91, 245, 0.25));
+    border-color: var(--ck-accent, #22c55e);
+    box-shadow: 0 0 8px var(--ck-accent-glow, rgba(34, 197, 94, 0.25));
   }
   .card.done {
     border-color: var(--ck-border, #1e1e1e);
@@ -33,7 +33,7 @@ componentSheet.replaceSync(`
     width: 14px;
     height: 14px;
     border: 2px solid var(--ck-border, #1e1e1e);
-    border-top-color: var(--ck-accent, #7c5bf5);
+    border-top-color: var(--ck-accent, #22c55e);
     border-radius: 50%;
     animation: ck-spin 0.7s linear infinite;
     flex-shrink: 0;

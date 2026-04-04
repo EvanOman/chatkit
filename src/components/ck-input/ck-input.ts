@@ -26,8 +26,8 @@ componentSheet.replaceSync(`
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
   .input-row:focus-within {
-    border-color: var(--ck-accent, #7c5bf5);
-    box-shadow: 0 0 0 3px var(--ck-accent-glow, rgba(124, 91, 245, 0.25)), 0 0 20px var(--ck-accent-glow, rgba(124, 91, 245, 0.25));
+    border-color: var(--ck-accent, #22c55e);
+    box-shadow: 0 0 0 3px var(--ck-accent-glow, rgba(34, 197, 94, 0.25)), 0 0 20px var(--ck-accent-glow, rgba(34, 197, 94, 0.25));
   }
   input {
     flex: 1;
@@ -55,13 +55,13 @@ componentSheet.replaceSync(`
     transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
   }
   .send-btn {
-    background: var(--ck-accent, #7c5bf5);
+    background: var(--ck-accent, #22c55e);
     color: #fff;
   }
   .send-btn:hover {
-    background: var(--ck-accent-hover, #6d4de6);
+    background: var(--ck-accent-hover, #16a34a);
     transform: scale(1.08);
-    box-shadow: 0 0 12px var(--ck-accent-glow, rgba(124, 91, 245, 0.25));
+    box-shadow: 0 0 12px var(--ck-accent-glow, rgba(34, 197, 94, 0.25));
   }
   .send-btn:active {
     transform: scale(0.95);

@@ -44,8 +44,8 @@ componentSheet.replaceSync(`
     color: var(--ck-text, #F0F0F0);
   }
   .tab-btn.active {
-    color: var(--ck-accent, #7c5bf5);
-    border-bottom-color: var(--ck-accent, #7c5bf5);
+    color: var(--ck-accent, #22c55e);
+    border-bottom-color: var(--ck-accent, #22c55e);
   }
   .tab-content {
     padding: 0.75rem 1rem;

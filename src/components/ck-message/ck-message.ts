@@ -29,12 +29,12 @@ componentSheet.replaceSync(`
     transition: box-shadow 0.2s ease;
   }
   .bubble.user {
-    background: linear-gradient(135deg, var(--ck-accent, #7c5bf5) 0%, #9333ea 100%);
+    background: linear-gradient(135deg, var(--ck-accent, #22c55e) 0%, #059669 100%);
     color: #fff;
     margin-left: auto;
     border-bottom-right-radius: 4px;
     max-width: 80%;
-    box-shadow: 0 2px 16px var(--ck-shadow-accent, rgba(124, 91, 245, 0.15));
+    box-shadow: 0 2px 16px var(--ck-shadow-accent, rgba(34, 197, 94, 0.15));
   }
   .bubble.assistant {
     background: var(--ck-bg-surface, #141414);
@@ -147,7 +147,7 @@ export class CkMessage extends CkBase {
 
   /** Append a collapsible code block to the message. */
   appendCodeBlock(code: string, label = "Code"): void {
-    if (!this.#container) return;
+    this.#ensureContainer();
     const details = document.createElement("details");
     details.className = "code-block";
     const summary = document.createElement("summary");
@@ -158,7 +158,26 @@ export class CkMessage extends CkBase {
     pre.appendChild(codeEl);
     details.appendChild(summary);
     details.appendChild(pre);
-    this.#container.appendChild(details);
+    this.#container!.appendChild(details);
+  }
+
+  /** Eagerly create the container if update() hasn't run yet. */
+  #ensureContainer(): void {
+    if (this.#container) return;
+    const shadow = this.shadowRoot!;
+    shadow.innerHTML = "";
+    const bubble = document.createElement("div");
+    const role = this.role ?? "assistant";
+    bubble.className = `bubble ${role}`;
+    if (role === "user") {
+      this.#container = bubble;
+    } else {
+      const markdown = document.createElement("div");
+      markdown.className = "ck-markdown";
+      bubble.appendChild(markdown);
+      this.#container = markdown;
+    }
+    shadow.appendChild(bubble);
   }
 
   #sanitizeContainer(): void {

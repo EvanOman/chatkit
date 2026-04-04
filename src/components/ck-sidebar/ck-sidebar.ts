@@ -57,8 +57,8 @@ componentSheet.replaceSync(`
   }
   .new-chat-btn:hover {
     background: var(--ck-bg-surface-hover, #1e1e1e);
-    border-color: var(--ck-accent, #7c5bf5);
-    box-shadow: 0 0 12px var(--ck-accent-glow, rgba(124, 91, 245, 0.25));
+    border-color: var(--ck-accent, #22c55e);
+    box-shadow: 0 0 12px var(--ck-accent-glow, rgba(34, 197, 94, 0.25));
   }
   .new-chat-btn:active {
     transform: scale(0.98);
@@ -97,8 +97,8 @@ componentSheet.replaceSync(`
     transform: scale(0.98);
   }
   .thread-item.active {
-    background: var(--ck-accent-soft, rgba(124, 91, 245, 0.10));
-    border-left: 2px solid var(--ck-accent, #7c5bf5);
+    background: var(--ck-accent-soft, rgba(34, 197, 94, 0.10));
+    border-left: 2px solid var(--ck-accent, #22c55e);
   }
   .thread-title {
     flex: 1;

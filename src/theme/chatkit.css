@@ -17,31 +17,31 @@
   --ck-bg-input: #141414;
   --ck-bg-code: #0d1117;
   --ck-bg-error: #2a0a0a;
-  --ck-bg-status: #0f0d2e;
+  --ck-bg-status: #052e16;
 
   --ck-text: #F0F0F0;
   --ck-text-secondary: #A1A1A1;
   --ck-text-muted: #5a5a5a;
   --ck-text-error: #ff6b6b;
-  --ck-text-status: #818cf8;
+  --ck-text-status: #4ade80;
   --ck-text-success: #34d399;
 
   --ck-border: #1e1e1e;
   --ck-border-error: #4c1d1d;
-  --ck-border-status: #312e81;
+  --ck-border-status: #14532d;
 
-  --ck-accent: #7c5bf5;
-  --ck-accent-hover: #6d4de6;
-  --ck-accent-soft: rgba(124, 91, 245, 0.10);
-  --ck-accent-glow: rgba(124, 91, 245, 0.25);
+  --ck-accent: #22c55e;
+  --ck-accent-hover: #16a34a;
+  --ck-accent-soft: rgba(34, 197, 94, 0.10);
+  --ck-accent-glow: rgba(34, 197, 94, 0.25);
 
   --ck-scrollbar: #2a2a2a;
   --ck-shadow: rgba(0, 0, 0, 0.5);
-  --ck-shadow-accent: rgba(124, 91, 245, 0.15);
+  --ck-shadow-accent: rgba(34, 197, 94, 0.15);
 
   --ck-table-header: #111111;
   --ck-table-stripe: #0e0e0e;
-  --ck-table-hover: #1a1540;
+  --ck-table-hover: #052e16;
 
   /* Sizing */
   --ck-sidebar-width: 16rem;
@@ -75,25 +75,25 @@ html.light,
   --ck-text-secondary: #555;
   --ck-text-muted: #999;
   --ck-text-error: #dc2626;
-  --ck-text-status: #4f46e5;
+  --ck-text-status: #16a34a;
   --ck-text-success: #16a34a;
 
   --ck-border: #e0e0e0;
   --ck-border-error: #fca5a5;
-  --ck-border-status: #c7d2fe;
+  --ck-border-status: #bbf7d0;
 
-  --ck-accent: #6d4de6;
-  --ck-accent-hover: #5c3dd5;
-  --ck-accent-soft: rgba(109, 77, 230, 0.06);
-  --ck-accent-glow: rgba(109, 77, 230, 0.12);
+  --ck-accent: #16a34a;
+  --ck-accent-hover: #15803d;
+  --ck-accent-soft: rgba(22, 163, 74, 0.06);
+  --ck-accent-glow: rgba(22, 163, 74, 0.12);
 
   --ck-scrollbar: #ccc;
   --ck-shadow: rgba(0, 0, 0, 0.06);
-  --ck-shadow-accent: rgba(109, 77, 230, 0.08);
+  --ck-shadow-accent: rgba(22, 163, 74, 0.08);
 
   --ck-table-header: #f0f0f0;
   --ck-table-stripe: #fafafa;
-  --ck-table-hover: #eef2ff;
+  --ck-table-hover: #f0fdf4;
 }
 
 /* ── Reduced motion ── */

@@ -26,8 +26,8 @@ componentSheet.replaceSync(`
     width: 100%;
     overflow: hidden;
     background:
-      radial-gradient(ellipse at 70% 20%, var(--ck-accent-glow, rgba(124, 91, 245, 0.25)) 0%, transparent 50%),
-      radial-gradient(ellipse at 20% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+      radial-gradient(ellipse at 70% 20%, var(--ck-accent-glow, rgba(34, 197, 94, 0.25)) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 80%, rgba(5, 150, 105, 0.06) 0%, transparent 40%),
       var(--ck-bg, #0A0A0A);
     color: var(--ck-text, #F0F0F0);
   }
@@ -364,17 +364,25 @@ export class CkApp extends CkBase {
       }
 
       case EventType.CODE: {
-        if (!this.#currentAssistantMsg) {
-          this.#currentAssistantMsg = document.createElement("ck-message") as CkMessage;
-          this.#currentAssistantMsg.role = "assistant";
-          this.#currentAssistantMsg.startStreaming();
-          messages.addTurnPhase(this.#currentAssistantMsg);
+        // Finalize current text message before showing code
+        if (this.#currentAssistantMsg) {
+          this.#currentAssistantMsg.endStreaming();
+          this.#currentAssistantMsg = null;
         }
-        this.#currentAssistantMsg.appendCodeBlock(data);
+        // Create a standalone collapsed code block as its own turn phase
+        const codeMsg = document.createElement("ck-message") as CkMessage;
+        codeMsg.role = "assistant";
+        codeMsg.appendCodeBlock(data);
+        messages.addTurnPhase(codeMsg);
         break;
       }
 
       case EventType.TOOL_USE: {
+        // Finalize current text before tool card
+        if (this.#currentAssistantMsg) {
+          this.#currentAssistantMsg.endStreaming();
+          this.#currentAssistantMsg = null;
+        }
         const parsed = this.#parseJSON<{ tool_name?: string; tool_id?: string }>(data);
         const card = document.createElement("ck-tool-card") as CkToolCard;
         card.toolName = parsed?.tool_name ?? "Tool";
@@ -401,6 +409,11 @@ export class CkApp extends CkBase {
       }
 
       case EventType.ARTIFACT: {
+        // Finalize current text before artifact
+        if (this.#currentAssistantMsg) {
+          this.#currentAssistantMsg.endStreaming();
+          this.#currentAssistantMsg = null;
+        }
         const parsed = this.#parseJSON<ArtifactData>(data);
         if (parsed) {
           const artifact = document.createElement("ck-artifact") as CkArtifact;
