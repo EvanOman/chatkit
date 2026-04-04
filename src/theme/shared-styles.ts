@@ -27,8 +27,8 @@ resetSheet.replaceSync(`
 export const animationsSheet = new CSSStyleSheet();
 animationsSheet.replaceSync(`
   @keyframes ck-fade-in {
-    from { opacity: 0; transform: translateY(4px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(8px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
   }
   @keyframes ck-pulse-dot {
     0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
@@ -36,6 +36,10 @@ animationsSheet.replaceSync(`
   }
   @keyframes ck-spin {
     to { transform: rotate(360deg); }
+  }
+  @keyframes ck-glow-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 var(--ck-accent-glow, rgba(124, 91, 245, 0.25)); }
+    50% { box-shadow: 0 0 16px 2px var(--ck-accent-glow, rgba(124, 91, 245, 0.25)); }
   }
 `);
 

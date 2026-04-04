@@ -18,7 +18,7 @@ const componentSheet = new CSSStyleSheet();
 componentSheet.replaceSync(`
   :host {
     display: block;
-    animation: ck-fade-in 0.2s ease-out;
+    animation: ck-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .bubble {
     padding: 0.75rem 1rem;
@@ -26,32 +26,39 @@ componentSheet.replaceSync(`
     max-width: var(--ck-max-message-width, 48rem);
     word-wrap: break-word;
     overflow-wrap: break-word;
+    transition: box-shadow 0.2s ease;
   }
   .bubble.user {
-    background: var(--ck-accent, #8b7cf6);
+    background: linear-gradient(135deg, var(--ck-accent, #7c5bf5) 0%, #9333ea 100%);
     color: #fff;
     margin-left: auto;
     border-bottom-right-radius: 4px;
     max-width: 80%;
+    box-shadow: 0 2px 16px var(--ck-shadow-accent, rgba(124, 91, 245, 0.15));
   }
   .bubble.assistant {
-    background: var(--ck-bg-surface, #2f2f2f);
+    background: var(--ck-bg-surface, #141414);
+    border: 1px solid var(--ck-border, #1e1e1e);
     border-bottom-left-radius: 4px;
   }
   .bubble.error {
-    background: var(--ck-bg-error, #3b1818);
-    color: var(--ck-text-error, #f87171);
-    border: 1px solid var(--ck-border-error, #5c2626);
+    background: var(--ck-bg-error, #2a0a0a);
+    color: var(--ck-text-error, #ff6b6b);
+    border: 1px solid var(--ck-border-error, #4c1d1d);
   }
   .code-block {
     margin: 0.5rem 0;
   }
   .code-block summary {
     cursor: pointer;
-    color: var(--ck-text-muted, #777);
+    color: var(--ck-text-muted, #5a5a5a);
     font-size: var(--ck-font-size-sm, 0.8125rem);
     font-family: var(--ck-font-mono, monospace);
     padding: 0.25rem 0;
+    transition: color 0.15s;
+  }
+  .code-block summary:hover {
+    color: var(--ck-text-secondary, #A1A1A1);
   }
   .code-block pre {
     background: var(--ck-bg-code, #0d1117);
@@ -61,6 +68,7 @@ componentSheet.replaceSync(`
     font-family: var(--ck-font-mono, monospace);
     font-size: 0.85em;
     line-height: 1.5;
+    border: 1px solid var(--ck-border, #1e1e1e);
   }
 `);
 

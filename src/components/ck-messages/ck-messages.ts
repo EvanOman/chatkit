@@ -17,6 +17,19 @@ componentSheet.replaceSync(`
     padding: 1rem;
     scroll-behavior: auto;
   }
+  :host::-webkit-scrollbar {
+    width: 6px;
+  }
+  :host::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  :host::-webkit-scrollbar-thumb {
+    background: var(--ck-scrollbar, #2a2a2a);
+    border-radius: 3px;
+  }
+  :host::-webkit-scrollbar-thumb:hover {
+    background: var(--ck-text-muted, #5a5a5a);
+  }
   .messages-inner {
     display: flex;
     flex-direction: column;
@@ -35,7 +48,6 @@ componentSheet.replaceSync(`
     margin-top: 0.25rem;
   }
   .turn-phase + .turn-phase {
-    border-top: 1px solid var(--ck-border, #3d3d3d);
     padding-top: 0.5rem;
   }
   .status-bubble {
@@ -43,12 +55,12 @@ componentSheet.replaceSync(`
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background: var(--ck-bg-status, #1a1a3e);
-    color: var(--ck-text-status, #a5b4fc);
+    background: var(--ck-bg-status, #0f0d2e);
+    color: var(--ck-text-status, #818cf8);
     border-radius: var(--ck-radius, 0.75rem);
-    border: 1px solid var(--ck-border-status, #2e2b5e);
+    border: 1px solid var(--ck-border-status, #312e81);
     font-size: var(--ck-font-size-sm, 0.8125rem);
-    animation: ck-fade-in 0.15s ease-out;
+    animation: ck-fade-in 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .pulse-dots {
     display: flex;
@@ -58,7 +70,7 @@ componentSheet.replaceSync(`
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background: var(--ck-text-status, #a5b4fc);
+    background: var(--ck-text-status, #818cf8);
     animation: ck-pulse-dot 1.4s ease-in-out infinite;
   }
   .pulse-dots span:nth-child(2) { animation-delay: 0.2s; }
@@ -69,13 +81,18 @@ componentSheet.replaceSync(`
     align-items: center;
     justify-content: center;
     flex: 1;
-    color: var(--ck-text-muted, #777);
-    gap: 0.5rem;
+    color: var(--ck-text-muted, #5a5a5a);
+    gap: 0.75rem;
     padding: 2rem;
   }
   .empty-state-title {
-    font-size: 1.1rem;
-    font-weight: 500;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ck-text-secondary, #A1A1A1);
+    letter-spacing: -0.01em;
+  }
+  .empty-state-subtitle {
+    font-size: 0.875rem;
   }
   .scroll-sentinel {
     height: 0;
@@ -198,7 +215,7 @@ export class CkMessages extends CkBase {
     this.#emptyState.className = "empty-state";
     this.#emptyState.innerHTML = `
       <div class="empty-state-title">Start a conversation</div>
-      <div>Send a message to begin</div>
+      <div class="empty-state-subtitle">Send a message to begin</div>
     `;
     shadow.appendChild(this.#emptyState);
 

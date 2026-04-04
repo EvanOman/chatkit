@@ -25,8 +25,11 @@ componentSheet.replaceSync(`
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background: var(--ck-bg, #212121);
-    color: var(--ck-text, #ececec);
+    background:
+      radial-gradient(ellipse at 70% 20%, var(--ck-accent-glow, rgba(124, 91, 245, 0.25)) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 80%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+      var(--ck-bg, #0A0A0A);
+    color: var(--ck-text, #F0F0F0);
   }
   .sidebar-area {
     flex-shrink: 0;

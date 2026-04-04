@@ -13,26 +13,26 @@ const componentSheet = new CSSStyleSheet();
 componentSheet.replaceSync(`
   :host {
     display: block;
-    animation: ck-fade-in 0.2s ease-out;
+    animation: ck-fade-in 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .card {
-    border: 1px solid var(--ck-border, #3d3d3d);
+    border: 1px solid var(--ck-border, #1e1e1e);
     border-radius: var(--ck-radius, 0.75rem);
     overflow: hidden;
-    background: var(--ck-bg-surface, #2f2f2f);
+    background: var(--ck-bg-surface, #141414);
   }
   .tab-bar {
     display: flex;
     gap: 0;
-    border-bottom: 1px solid var(--ck-border, #3d3d3d);
-    background: var(--ck-table-header, #2a2a2a);
+    border-bottom: 1px solid var(--ck-border, #1e1e1e);
+    background: var(--ck-table-header, #111111);
     overflow-x: auto;
   }
   .tab-btn {
-    padding: 0.375rem 0.875rem;
+    padding: 0.5rem 1rem;
     border: none;
     background: transparent;
-    color: var(--ck-text-secondary, #b4b4b4);
+    color: var(--ck-text-muted, #5a5a5a);
     font-size: var(--ck-font-size-sm, 0.8125rem);
     font-family: var(--ck-font, system-ui, sans-serif);
     cursor: pointer;
@@ -41,16 +41,24 @@ componentSheet.replaceSync(`
     transition: color 0.15s, border-color 0.15s;
   }
   .tab-btn:hover {
-    color: var(--ck-text, #ececec);
+    color: var(--ck-text, #F0F0F0);
   }
   .tab-btn.active {
-    color: var(--ck-accent, #8b7cf6);
-    border-bottom-color: var(--ck-accent, #8b7cf6);
+    color: var(--ck-accent, #7c5bf5);
+    border-bottom-color: var(--ck-accent, #7c5bf5);
   }
   .tab-content {
     padding: 0.75rem 1rem;
     max-height: 24rem;
     overflow: auto;
+  }
+  .tab-content::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  .tab-content::-webkit-scrollbar-thumb {
+    background: var(--ck-scrollbar, #2a2a2a);
+    border-radius: 2px;
   }
   .tab-content pre {
     margin: 0;
@@ -66,21 +74,28 @@ componentSheet.replaceSync(`
     font-size: 0.85em;
   }
   .data-table th, .data-table td {
-    padding: 0.375rem 0.625rem;
-    border: 1px solid var(--ck-border, #3d3d3d);
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--ck-border, #1e1e1e);
     text-align: left;
   }
   .data-table th {
-    background: var(--ck-table-header, #2a2a2a);
+    background: var(--ck-table-header, #111111);
     font-weight: 600;
     position: sticky;
     top: 0;
+    color: var(--ck-text-secondary, #A1A1A1);
+    text-transform: uppercase;
+    font-size: 0.75em;
+    letter-spacing: 0.05em;
   }
   .data-table tr:nth-child(even) td {
-    background: var(--ck-table-stripe, #262626);
+    background: var(--ck-table-stripe, #0e0e0e);
+  }
+  .data-table tr:hover td {
+    background: var(--ck-table-hover, #1a1540);
   }
   .error-text {
-    color: var(--ck-text-error, #f87171);
+    color: var(--ck-text-error, #ff6b6b);
   }
 `);
 

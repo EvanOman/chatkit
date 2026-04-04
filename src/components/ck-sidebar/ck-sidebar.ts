@@ -25,8 +25,8 @@ componentSheet.replaceSync(`
     display: block;
     width: var(--ck-sidebar-width, 16rem);
     height: 100%;
-    background: var(--ck-bg-sidebar, #171717);
-    border-right: 1px solid var(--ck-border, #3d3d3d);
+    background: var(--ck-bg-sidebar, #050505);
+    border-right: 1px solid var(--ck-border, #1e1e1e);
     overflow: hidden;
     flex-shrink: 0;
   }
@@ -46,17 +46,22 @@ componentSheet.replaceSync(`
     gap: 0.5rem;
     width: 100%;
     padding: 0.5rem 0.75rem;
-    border: 1px solid var(--ck-border, #3d3d3d);
+    border: 1px solid var(--ck-border, #1e1e1e);
     border-radius: 0.5rem;
     background: transparent;
-    color: var(--ck-text, #ececec);
+    color: var(--ck-text, #F0F0F0);
     font-family: var(--ck-font, system-ui, sans-serif);
     font-size: 0.875rem;
     cursor: pointer;
-    transition: background 0.15s;
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
   }
   .new-chat-btn:hover {
-    background: var(--ck-bg-surface-hover, #2a2a2a);
+    background: var(--ck-bg-surface-hover, #1e1e1e);
+    border-color: var(--ck-accent, #7c5bf5);
+    box-shadow: 0 0 12px var(--ck-accent-glow, rgba(124, 91, 245, 0.25));
+  }
+  .new-chat-btn:active {
+    transform: scale(0.98);
   }
   .new-chat-btn svg {
     width: 1rem;
@@ -72,24 +77,28 @@ componentSheet.replaceSync(`
     width: 4px;
   }
   .thread-list::-webkit-scrollbar-thumb {
-    background: var(--ck-border, #3d3d3d);
+    background: var(--ck-border, #1e1e1e);
     border-radius: 2px;
   }
   .thread-item {
     display: flex;
     align-items: center;
     padding: 0.5rem 0.75rem;
-    border-radius: 0.375rem;
+    border-radius: 0.5rem;
     cursor: pointer;
-    transition: background 0.15s;
+    transition: background 0.15s, transform 0.1s;
     position: relative;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
   }
   .thread-item:hover {
-    background: var(--ck-bg-surface-hover, #2a2a2a);
+    background: var(--ck-bg-surface-hover, #1e1e1e);
+  }
+  .thread-item:active {
+    transform: scale(0.98);
   }
   .thread-item.active {
-    background: var(--ck-accent-soft, rgba(139, 124, 246, 0.15));
+    background: var(--ck-accent-soft, rgba(124, 91, 245, 0.10));
+    border-left: 2px solid var(--ck-accent, #7c5bf5);
   }
   .thread-title {
     flex: 1;
@@ -97,10 +106,11 @@ componentSheet.replaceSync(`
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 0.8125rem;
-    color: var(--ck-text-secondary, #b4b4b4);
+    color: var(--ck-text-secondary, #A1A1A1);
   }
   .thread-item.active .thread-title {
-    color: var(--ck-text, #ececec);
+    color: var(--ck-text, #F0F0F0);
+    font-weight: 500;
   }
   .delete-btn {
     display: none;
@@ -111,7 +121,7 @@ componentSheet.replaceSync(`
     border: none;
     border-radius: 0.25rem;
     background: transparent;
-    color: var(--ck-text-muted, #777);
+    color: var(--ck-text-muted, #5a5a5a);
     cursor: pointer;
     flex-shrink: 0;
     transition: color 0.15s, background 0.15s;
@@ -120,8 +130,8 @@ componentSheet.replaceSync(`
     display: flex;
   }
   .delete-btn:hover {
-    color: var(--ck-text, #ececec);
-    background: var(--ck-bg-surface-hover, #2a2a2a);
+    color: var(--ck-text-error, #ff6b6b);
+    background: var(--ck-bg-error, #2a0a0a);
   }
   .delete-btn svg {
     width: 0.875rem;
@@ -130,7 +140,7 @@ componentSheet.replaceSync(`
   .empty-state {
     padding: 1.5rem 0.75rem;
     text-align: center;
-    color: var(--ck-text-muted, #777);
+    color: var(--ck-text-muted, #5a5a5a);
     font-size: 0.8125rem;
   }
 
@@ -139,7 +149,8 @@ componentSheet.replaceSync(`
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
     z-index: 99;
   }
 
@@ -152,12 +163,12 @@ componentSheet.replaceSync(`
       height: 100%;
       z-index: 100;
       transform: translateX(-100%);
-      transition: transform 0.25s ease;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: none;
     }
     :host([open]) {
       transform: translateX(0);
-      box-shadow: var(--ck-shadow, 0 4px 24px rgba(0, 0, 0, 0.4));
+      box-shadow: 4px 0 32px rgba(0, 0, 0, 0.5);
     }
     :host([open]) .backdrop {
       display: block;

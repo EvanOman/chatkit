@@ -13,29 +13,34 @@ componentSheet.replaceSync(`
   :host {
     display: block;
     padding: 0.75rem 1rem;
-    border-top: 1px solid var(--ck-border, #3d3d3d);
-    background: var(--ck-bg, #212121);
+    background: var(--ck-bg, #0A0A0A);
   }
   .input-row {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background: var(--ck-bg-input, #303030);
+    background: var(--ck-bg-input, #141414);
+    border: 1px solid var(--ck-border, #1e1e1e);
     border-radius: 1.5rem;
     padding: 0.375rem 0.375rem 0.375rem 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .input-row:focus-within {
+    border-color: var(--ck-accent, #7c5bf5);
+    box-shadow: 0 0 0 3px var(--ck-accent-glow, rgba(124, 91, 245, 0.25)), 0 0 20px var(--ck-accent-glow, rgba(124, 91, 245, 0.25));
   }
   input {
     flex: 1;
     border: none;
     outline: none;
     background: transparent;
-    color: var(--ck-text, #ececec);
+    color: var(--ck-text, #F0F0F0);
     font-family: var(--ck-font, system-ui, sans-serif);
     font-size: var(--ck-font-size, 0.9375rem);
     line-height: 1.4;
   }
   input::placeholder {
-    color: var(--ck-text-muted, #777);
+    color: var(--ck-text-muted, #5a5a5a);
   }
   .btn {
     display: flex;
@@ -47,25 +52,35 @@ componentSheet.replaceSync(`
     border: none;
     cursor: pointer;
     flex-shrink: 0;
-    transition: background 0.15s;
+    transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
   }
   .send-btn {
-    background: var(--ck-accent, #8b7cf6);
+    background: var(--ck-accent, #7c5bf5);
     color: #fff;
   }
   .send-btn:hover {
-    background: var(--ck-accent-hover, #7a6be5);
+    background: var(--ck-accent-hover, #6d4de6);
+    transform: scale(1.08);
+    box-shadow: 0 0 12px var(--ck-accent-glow, rgba(124, 91, 245, 0.25));
+  }
+  .send-btn:active {
+    transform: scale(0.95);
   }
   .send-btn:disabled {
-    opacity: 0.4;
+    opacity: 0.3;
     cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
   }
   .stop-btn {
-    background: var(--ck-text-error, #f87171);
+    background: var(--ck-text-error, #ff6b6b);
     color: #fff;
   }
   .stop-btn:hover {
-    opacity: 0.85;
+    transform: scale(1.08);
+  }
+  .stop-btn:active {
+    transform: scale(0.95);
   }
   .btn svg {
     width: 1rem;
